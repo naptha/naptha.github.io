@@ -1,0 +1,118 @@
+img.nomargin {
+    margin: 0;
+    box-shadow: none;
+}
+html {
+    /*background-color: #e6e9e9;*/
+    background-color: #F5F0E8;
+}
+
+body {
+    font-family:  Lato, "Avenir", Helvetica, Arial, sans-serif;
+    font-size: 16pt;
+    font-weight: 300;
+    margin: 0;
+    min-width: 800px;
+    line-height: 1.5em;
+    color: rgba(92, 92, 92, 1);
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.mainimg {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.51);
+    background: white;
+    float: right; 
+    margin: 50px;
+    margin-right: 70px;
+}
+.content {
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+
+    padding: 1em 2em 1em;
+    margin-bottom: 40px;
+}
+.header {
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #222;
+    font-weight: 600;
+    line-height: 1.3em;
+}
+
+h2 {
+    margin-top: 1.3em;
+}
+
+
+hr {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+
+.jumbo {
+    width: 100%;
+    background-color: rgb(199, 95, 0);
+    color: white;
+    box-shadow: 0 0 50px rgba(0,0,0,0.3) inset;
+}
+
+.jumbo.blue {
+    background-color: rgb(0, 127, 199);
+}
+
+.jumbo.green {
+	background-color: rgb(58, 126, 52);
+}
+
+.jumbo.red {
+	background-color: rgb(162, 47, 47);
+}
+
+.jumbo.teal {
+	background-color: rgb(72, 148, 148);
+}
+
+.jumbo.gold {
+	background-color: rgb(179, 148, 52);
+}
+.jumbo .internal {
+    /*width: 400px;*/
+    padding: 80px;
+    color: rgb(247, 247, 247);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 30pt;
+    line-height: 1.3em;
+}
+.jumbo input, .jumbo button {
+    border-radius: 5px;
+    -webkit-appeareance: none;
+    font-size: 20px;
+    padding: 10px 16px;
+    border: none;
+}
+.jumbo input[type=submit], .jumbo button {
+    background-color: rgb(255, 204, 0);
+}
+
+.jumbo button {
+    font-size: 40px;
+}
+
+a {
+    text-decoration: none
+}

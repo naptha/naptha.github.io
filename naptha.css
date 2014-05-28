@@ -1,0 +1,580 @@
+/* this is the main thing for like the cursor over a thing
+ and like the most important part of this entire file
+*/
+img[naptha_cursor=text] {
+  cursor: text !important;
+}
+img[naptha_cursor=region] {
+  cursor: default !important;
+}
+/*
+  so before you cry out in agony trying to read the following css,
+  which ostensibly is marked with an extreme sense of self !importance,
+  it actually does make sense to add, as a means of circumventing
+  the pesky tendency for websites to have styles which override 
+  naptha's styling
+
+  anyway, this is all preprocessed with LESS anyway, so there aren't
+  really so many importants. they're added with one line.
+
+  TODO: figure out a more elegant way to abstract away all this
+  css nastiness to simplify the style isolation of an extension,
+  without resorting to shadow dom per se
+*/
+#project_naptha_container * {
+  -moz-appearance: none;
+  -moz-background-inline-policy: continuous;
+  -moz-binding: none;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  -moz-box-align: stretch;
+  -moz-box-direction: normal;
+  -moz-box-flex: 0;
+  -moz-box-ordinal-group: 1;
+  -moz-box-orient: horizontal;
+  -moz-box-pack: start;
+  -moz-column-count: auto;
+  -moz-column-fill: balance;
+  -moz-column-gap: 13px;
+  -moz-column-rule-color: #000000;
+  -moz-column-rule-style: none;
+  -moz-column-rule-width: 0px;
+  -moz-column-width: auto;
+  -moz-float-edge: content-box;
+  -moz-font-feature-settings: normal;
+  -moz-font-language-override: normal;
+  -moz-force-broken-image-icon: 0;
+  -moz-hyphens: manual;
+  -moz-image-region: auto;
+  -moz-orient: auto;
+  -moz-osx-font-smoothing: auto;
+  -moz-outline-radius-bottomleft: 0px;
+  -moz-outline-radius-bottomright: 0px;
+  -moz-outline-radius-topleft: 0px;
+  -moz-outline-radius-topright: 0px;
+  -moz-stack-sizing: stretch-to-fit;
+  -moz-tab-size: 8;
+  -moz-text-align-last: auto;
+  -moz-text-decoration-color: #000000;
+  -moz-text-decoration-line: none;
+  -moz-text-decoration-style: solid;
+  -moz-text-size-adjust: auto;
+  -moz-user-focus: none;
+  -moz-user-input: auto;
+  -moz-user-modify: read-only;
+  -moz-user-select: auto;
+  -moz-window-shadow: default;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-direction: normal;
+  -webkit-animation-duration: 0s;
+  -webkit-animation-fill-mode: none;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-name: none;
+  -webkit-animation-play-state: running;
+  -webkit-animation-timing-function: ease;
+  -webkit-app-region: no-drag;
+  -webkit-appearance: none;
+  -webkit-backface-visibility: visible;
+  -webkit-background-clip: border-box;
+  -webkit-background-composite: source-over;
+  -webkit-background-origin: padding-box;
+  -webkit-background-size: auto;
+  -webkit-border-fit: border;
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-image: none;
+  -webkit-border-vertical-spacing: 0px;
+  -webkit-box-align: stretch;
+  -webkit-box-decoration-break: slice;
+  -webkit-box-direction: normal;
+  -webkit-box-flex-group: 1;
+  -webkit-box-flex: 0;
+  -webkit-box-lines: single;
+  -webkit-box-ordinal-group: 1;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: start;
+  -webkit-box-reflect: none;
+  -webkit-box-shadow: none;
+  -webkit-clip-path: none;
+  -webkit-column-axis: auto;
+  -webkit-column-break-after: auto;
+  -webkit-column-break-before: auto;
+  -webkit-column-break-inside: auto;
+  -webkit-column-count: auto;
+  -webkit-column-gap: normal;
+  -webkit-column-progression: normal;
+  -webkit-column-rule-color: #000000;
+  -webkit-column-rule-style: none;
+  -webkit-column-rule-width: 0px;
+  -webkit-column-span: none;
+  -webkit-column-width: auto;
+  -webkit-filter: none;
+  -webkit-font-smoothing: auto;
+  -webkit-highlight: none;
+  -webkit-hyphenate-character: auto;
+  -webkit-line-box-contain: block inline replaced;
+  -webkit-line-break: auto;
+  -webkit-line-clamp: none;
+  -webkit-locale: auto;
+  -webkit-margin-after-collapse: collapse;
+  -webkit-margin-before-collapse: collapse;
+  -webkit-mask-box-image-outset: 0px;
+  -webkit-mask-box-image-repeat: stretch;
+  -webkit-mask-box-image-slice: 0 fill;
+  -webkit-mask-box-image-source: none;
+  -webkit-mask-box-image-width: auto;
+  -webkit-mask-box-image: none;
+  -webkit-mask-clip: border-box;
+  -webkit-mask-composite: source-over;
+  -webkit-mask-image: none;
+  -webkit-mask-origin: border-box;
+  -webkit-mask-position: 0% 0%;
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: auto;
+  -webkit-perspective-origin: 454.5px 0px;
+  -webkit-perspective: none;
+  -webkit-print-color-adjust: economy;
+  -webkit-rtl-ordering: logical;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.4);
+  -webkit-text-combine: none;
+  -webkit-text-decorations-in-effect: none;
+  /*-webkit-text-emphasis-color: rgb(0, 0, 0);
+    -webkit-text-emphasis-position: over;
+    -webkit-text-emphasis-style: none;
+    -webkit-text-fill-color: rgb(0, 0, 0); 
+    -webkit-text-orientation: vertical-right;
+    -webkit-text-security: none;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+    -webkit-text-stroke-width: 0px;*/
+  -webkit-transform: none;
+  -webkit-transition-delay: 0s;
+  -webkit-transition-duration: 0s;
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease;
+  -webkit-user-drag: auto;
+  -webkit-user-modify: read-only;
+  -webkit-user-select: text;
+  -webkit-writing-mode: horizontal-tb;
+  align-content: stretch;
+  align-items: stretch;
+  align-self: stretch;
+  alignment-baseline: auto;
+  animation-delay: 0s;
+  animation-direction: normal;
+  animation-duration: 0s;
+  animation-fill-mode: none;
+  animation-iteration-count: 1;
+  animation-name: none;
+  animation-play-state: running;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  backface-visibility: visible;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  background-size: auto auto;
+  background-size: auto;
+  baseline-shift: baseline;
+  border-bottom-color: #000000;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-collapse: separate;
+  border-image-outset: 0 0 0 0;
+  border-image-outset: 0px;
+  border-image-repeat: stretch stretch;
+  border-image-repeat: stretch;
+  border-image-slice: 100% 100% 100% 100%;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1 1 1 1;
+  border-image-width: 1;
+  border-left-color: #000000;
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-color: #000000;
+  border-right-style: none;
+  border-right-width: 0px;
+  border-spacing: 0px 0px;
+  border-top-color: #000000;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top-style: none;
+  border-top-width: 0px;
+  bottom: auto;
+  box-shadow: none;
+  box-sizing: content-box;
+  buffered-rendering: auto;
+  caption-side: top;
+  clear: none;
+  clip-path: none;
+  clip-rule: nonzero;
+  clip: auto;
+  color-interpolation-filters: linearrgb;
+  color-interpolation: srgb;
+  color-rendering: auto;
+  /*color: rgb(0, 0, 0);*/
+  content: none;
+  counter-increment: none;
+  counter-reset: none;
+  cursor: auto;
+  direction: ltr;
+  /*display: block;*/
+  dominant-baseline: auto;
+  empty-cells: -moz-show-background;
+  empty-cells: show;
+  /*fill-opacity: 1;
+    fill-rule: nonzero;
+    fill: rgb(0, 0, 0);*/
+  filter: none;
+  flex-basis: auto;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-wrap: nowrap;
+  float: none;
+  /*flood-color: rgb(0, 0, 0);
+    flood-opacity: 1;*/
+  /*font-family: serif;
+    font-family: Times;
+    font-kerning: auto;
+    font-size-adjust: none;
+    font-size: 13px;
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant: normal;
+    font-weight: 400;
+    font-weight: normal;*/
+  glyph-orientation-horizontal: 0deg;
+  glyph-orientation-vertical: auto;
+  height: auto;
+  image-orientation: 0deg;
+  image-rendering: auto;
+  ime-mode: auto;
+  justify-content: flex-start;
+  kerning: 0;
+  left: auto;
+  letter-spacing: normal;
+  lighting-color: #ffffff;
+  line-height: 13.5px;
+  line-height: normal;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: disc;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  marker-end: none;
+  marker-mid: none;
+  marker-offset: auto;
+  marker-start: none;
+  mask-type: luminance;
+  mask: none;
+  max-height: none;
+  max-width: none;
+  min-height: 0px;
+  min-width: 0px;
+  object-fit: fill;
+  object-position: 50% 50%;
+  opacity: 1;
+  order: 0;
+  orphans: auto;
+  outline-color: #000000;
+  outline-offset: 0px;
+  outline-style: none;
+  outline-width: 0px;
+  overflow-wrap: normal;
+  overflow-x: visible;
+  overflow-y: visible;
+  overflow: visible;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  page-break-after: auto;
+  page-break-before: auto;
+  page-break-inside: auto;
+  perspective-origin: 50% 50%;
+  perspective: none;
+  /*pointer-events: auto;*/
+  position: static;
+  quotes: "“" "”" "‘" "’";
+  resize: none;
+  right: auto;
+  shape-rendering: auto;
+  speak: normal;
+  stop-color: #000000;
+  stop-opacity: 1;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  stroke-dashoffset: 0px;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 4;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  stroke-width: 1px;
+  stroke: none;
+  tab-size: 8;
+  table-layout: auto;
+  text-align: start;
+  text-anchor: start;
+  text-decoration: none solid #000000;
+  text-decoration: none;
+  text-indent: 0px;
+  text-overflow: clip;
+  text-rendering: auto;
+  text-shadow: none;
+  text-transform: none;
+  top: auto;
+  transform-origin: 50% 50%;
+  transform-style: flat;
+  transform: none;
+  transition-delay: 0s;
+  transition-duration: 0s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-timing-function: ease;
+  unicode-bidi: normal;
+  vector-effect: none;
+  vertical-align: baseline;
+  visibility: visible;
+  white-space: normal;
+  widows: auto;
+  width: auto;
+  word-break: normal;
+  word-spacing: 0px;
+  word-wrap: normal;
+  writing-mode: lr-tb;
+  z-index: auto;
+  zoom: 1;
+}
+#project_naptha_container {
+  /* Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+  position: absolute !important !important;
+  top: 0 !important !important;
+  left: 0 !important !important;
+  margin: 0 !important !important;
+  padding: 0 !important !important;
+  border: 0 !important !important;
+}
+#project_naptha_container u {
+  text-decoration: underline !important !important;
+}
+#project_naptha_container menu {
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important;
+  background: white !important;
+  border-radius: 2px !important;
+  color: black !important;
+  cursor: default !important;
+  margin: 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  /*outline: 1px solid rgba(0, 0, 0, 0.2);*/
+  padding: 8px 0 !important;
+  position: fixed !important;
+  white-space: nowrap !important;
+}
+#project_naptha_container menu > * {
+  box-sizing: border-box !important;
+  display: block !important;
+  margin: 0 !important;
+  text-align: start !important;
+  width: 100% !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+}
+#project_naptha_container menu > :not(hr) {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: black !important;
+  font: inherit !important;
+  line-height: 18px !important;
+  outline: none !important;
+  overflow: hidden !important;
+  padding: 0 20px !important;
+  padding-right: 20px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  text-overflow: ellipsis !important;
+  text-align: left !important;
+}
+#project_naptha_container menu > hr {
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02) 96%) !important;
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02) 96%) !important;
+  background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02) 96%) !important;
+  background: linear-gradient(left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02) 96%) !important;
+  border: 0 !important;
+  height: 1px !important;
+  margin: 5px 0 !important;
+}
+#project_naptha_container menu > .gray {
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+#project_naptha_container menu small {
+  color: rgba(0, 0, 0, 0.4) !important;
+  font-size: 70% !important;
+}
+#project_naptha_container menu > .halfgray {
+  color: rgba(12, 57, 138, 0.6) !important;
+  /*rgba(43, 73, 126, 0.6)*/
+}
+#project_naptha_container menu > .ideal {
+  font-weight: bold !important;
+}
+#project_naptha_container menu > [hidden] {
+  display: none !important;
+}
+#project_naptha_container menu > :not(hr)[selected] {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+#project_naptha_container menu > :not(hr)[selected]:active {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+#project_naptha_container menu > [checked]::before {
+  content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI5IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIHN0cm9rZT0ibm9uZSIgZD0ibTEuMTkzMzMsNS40NzM1NmwyLjI4OTk1LDEuOTI0MDdsNC4zNTkwOSwtNC4wMDM0OGwtMC4wMTE2MSwtMi4wNjc0OGwtNC4yNjYwOCwzLjkzMTc4bC0yLjM3MTM1LC0xLjgyODQ1IiBmaWxsPSIjMDAwMDAwIi8+PC9zdmc+') !important;
+  display: inline-block !important;
+  height: 9px !important;
+  margin: 0 5px !important;
+  width: 10px !important;
+}
+#project_naptha_container menu > .dropdown::before {
+  content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0aD0iNHB4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iMCAwIDQgNyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNCA3IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBvbHlnb24gZmlsbD0iIzMzMzMzMyIgcG9pbnRzPSIzLjczMywzLjUgMCw3IDAsMCAiLz4KCjwvc3ZnPgo=') !important;
+  display: inline-block !important;
+  height: 9px !important;
+  /*margin: -25px 5px;*/
+  margin: 0 -7px !important;
+  width: 4px !important;
+  float: right !important;
+  position: relative !important;
+  /*top: 5px;*/
+}
+#project_naptha_container menu > [checked] {
+  padding-left: 0 !important;
+}
+#project_naptha_container .fade {
+  -webkit-animation: fade 1s !important;
+  animation: fade 1s !important;
+  opacity: 1 !important;
+}
+#project_naptha_container #project_naptha_container .trans {
+  -webkit-transition: opacity 1s linear !important;
+  -moz-transition: opacity 1s linear !important;
+  transition: opacity 1s linear !important;
+}
+#project_naptha_container .contextmenu_overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: transparent !important;
+  display: block !important;
+  opacity: 1.0 !important;
+  overflow: hidden !important;
+}
+#project_naptha_container .alert-danger,
+#project_naptha_container .alert-error {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.42857143 !important;
+  color: #b94a48 !important;
+  background: rgba(242, 222, 222, 0.95) !important;
+  padding: 8px 35px 8px 14px !important;
+  margin-bottom: 20px !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid #eed3d7 !important;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+  word-wrap: break-word !important;
+}
+#project_naptha_container button.close {
+  padding: 0 !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: 0 !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  position: relative !important;
+  top: -2px !important;
+  right: -21px !important;
+  line-height: 20px !important;
+}
+#project_naptha_container .close {
+  float: right !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  line-height: 20px !important;
+  color: #000000 !important;
+  text-shadow: 0 1px 0 #ffffff !important;
+  opacity: 0.2 !important;
+}
+#project_naptha_container menu .credits-button {
+  float: right !important;
+  color: white !important;
+  margin-top: 1px !important;
+  padding-right: 4px !important;
+  padding-left: 4px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  border-radius: 4px !important;
+  font-size: 80% !important;
+  margin-right: -5px !important;
+}
+#project_naptha_container menu .credits-button {
+  background: rgba(0, 128, 0, 0.3) !important;
+}
+#project_naptha_container menu > [selected] .credits-button {
+  background: rgba(0, 128, 0, 0.8) !important;
+}
+#project_naptha_container menu .credits-button.low {
+  background: rgba(255, 156, 48, 0.3) !important;
+}
+#project_naptha_container menu > [selected] .credits-button.low {
+  background: rgba(255, 156, 48, 0.8) !important;
+}
+#project_naptha_container menu .credits-button.low {
+  background: rgba(255, 156, 48, 0.3) !important;
+}
+#project_naptha_container menu > [selected] .credits-button.low {
+  background: rgba(255, 156, 48, 0.8) !important;
+}
+#project_naptha_container menu .credits-button.empty {
+  background: rgba(190, 0, 0, 0.3) !important;
+}
+#project_naptha_container menu > [selected] .credits-button.empty {
+  background: rgba(190, 0, 0, 0.8) !important;
+}
+#project_naptha_container menu .credits-button.offline {
+  background: rgba(75, 75, 75, 0.3) !important;
+}
+#project_naptha_container menu > [selected] .credits-button.offline {
+  background: rgba(75, 75, 75, 0.8) !important;
+}
+#project_naptha_container menu {
+  font-size: 12px !important;
+  min-width: 180px !important;
+  position: absolute !important;
+}
+#project_naptha_container menu * {
+  cursor: default !important;
+}
+/*
+alert warning
+
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAMCAYAAAC5tzfZAAAB60lEQVQoz4XLz48LYQDG8ed933nnnU5nOu10u22y2p1Usy0hi1PDTUSQSPbAaYODtQ6ybbIcRCIR4iIhEhJ/gLSEZENWQoQNl8VJkGXrQlcttrpa1d/TqZsEK57j98kHWGE3J62Jeyejpanjq9Mr/fTPkE1bw0GTnkvEJDMW91z4/HZmx3+RW+C0amioq9HXiirbhWcXT9XKi+o/0bW0NeLRsU2Pj9xI7LmbcrxbLznf5zctzk2PrYgyE5bs03DM72MqU9xtSsjD0of3H2W7yhv5W4eXP+XCfyHOcCjYx7cYJoFL2ImX9y/TL6/ubPD6vFCxsLY4f3v8N5RJWRG/QQ/2BTjcuoBTfxeqlwtJr88TVhQG05DQKkzvK+afD/9CLo4DwQDfqOoCjCuwK7lQd3n2jGFq6whnkGQOQykNFt9cH283G4xlU9ZQv59eGVilaEKT0LIJaiQ6pw3unO05LZeMYkQIBlkwlJfya0Qg+ZiqCpkM9ctBRecgBGh2eEOPjV4Nr997tlJTT1S+2RXHdkAJRcCwtYUn549Sj8b2G14OLjMQSiCkrqtemNn8NHtk6OuLqd1Sr6cBAAGgCAlo5rZLta6UKTbFaK1CKYBeD6DVpQe7nB/tZCAyYHYo7xarrEMpIR2HdIkef/QTFvCg8YwdSV8AAAAASUVORK5CYII=
+*/
