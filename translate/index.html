@@ -47,7 +47,18 @@
 <div  class="header" style="margin-bottom: 40px">
     I have seen the future and it is shiny.
 </div>
+<script>
+    document.addEventListener('NapthaDataEvent', function(e){
+        function get(attr){ return e.target.getAttribute(attr) }
+        
+        console.log("naptha installation version", get('version'))
 
+        document.getElementById("project_naptha_user_token").value = get('user_id');
+        document.getElementById("project_naptha_is_installed").style.display = '';
+        document.getElementById("project_naptha_not_installed").style.display = 'none';
+
+    }, false)
+</script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

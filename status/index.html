@@ -48,8 +48,34 @@
 
 
     <div  class="header" style="margin-bottom: 40px">
-        Go back to the  <a href="/translate">home page </a>
+        Go back to the  <a href="/">home page </a>
     </div>
+
+    <script>
+        document.addEventListener('NapthaDataEvent', function(e){
+            function get(attr){ return e.target.getAttribute(attr) }
+            
+            console.log("naptha installation version", get('version'))
+
+
+            var injection = document.getElementById("project_naptha_inject_status");
+            injection.style.display = 'none';
+
+            var injection_load = document.getElementById("project_naptha_loading_status")
+            injection_load.style.display = '';
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', get('apiroot') + 'webstatus?user=' + encodeURIComponent(get('user_id')), true)
+            xhr.onload = function(){
+                injection_load.style.display = 'none';
+                injection.innerHTML = xhr.responseText;
+                injection.style.display = '';
+            }
+            xhr.send(null)
+
+        }, false)
+    </script>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
