@@ -134,7 +134,7 @@
 					<b>Project Naptha</b> automatically applies state-of-the-art computer vision algorithms on <b>every image</b> you see while browsing the web. The result is a <b>seamless and intuitive</b> experience, where you can <b>highlight</b> as well as <b>copy and paste</b> and even <b>edit and translate</b> the text formerly trapped within an image. 
 				</p>
 				<div id="install-button" style="display: none">
-					<button onclick="chrome.webstore.install()">Add to <b>Chrome</b></button>
+					<button onclick="window.location='https://chrome.google.com/webstore/detail/molncoemjfmpgdkbdlbjmhlcgniigdnf'">Add to <b>Chrome</b></button>
 					<a href="#" onclick="switch_consolation();return false" style="font-size: 16px; color: white; font-weight: normal">Other browser?</a>
 				</div>
 
@@ -146,7 +146,7 @@
 				
 
 				<script>
-					if(window.chrome && window.chrome.webstore && window.chrome.webstore.install){
+					if(window.chrome){
 						document.getElementById('install-button').style.display = ''
 						document.getElementById("consolation-prize").style.display = 'none'
 					}
